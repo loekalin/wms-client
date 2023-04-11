@@ -24,11 +24,11 @@ const Navbar = ({ children }) => {
   console.log(sidebarChildClicked);
   return (
     <>
-      <aside className="h-screen flex top-0 fixed z-[9999] w-full">
+      <aside className="w-full fixed h-0 flex top-0 ">
         <aside className={`border-r p-2 h-screen transition-all duration-300 ${sidebarClicked ? "w-14" : "w-80"}`}>
           <span className="flex-row flex items-center space-x-4 justify-center">
             <GiHouse size={28} />
-            {!sidebarClicked ? <p className="text-2xl font-semibold">Small WMS</p> : null}
+            {!sidebarClicked && <p className="text-2xl font-semibold">Small WMS</p>}
           </span>
           <SidebarContent
             sidebarClicked={sidebarClicked}
@@ -41,7 +41,8 @@ const Navbar = ({ children }) => {
         {/*  navbar */}
         <TopBar toggleSidebar={toggleSidebar} />
       </aside>
-      <main className={`${!sidebarClicked ? "ml-[19rem] " : "ml-[5.5rem]"} mr-6 mt-16 transition-all duration-300`}>{children}</main>
+      {/* <main className={`${!sidebarClicked ? "translate-x-72 translate-y-80" : ""} transition-all duration-300`}>{children}</main> */}
+      <main className={`${!sidebarClicked ? "ml-[19rem] " : "ml-[5.5rem]"} mr-6 mt-16  transition-all duration-300`}>{children}</main>
     </>
   );
 };
@@ -60,14 +61,14 @@ const TopBar = ({ toggleSidebar }) => {
       <div className="flex flex-row items-center space-x-4">
         <p>Budi</p>
         <FaUserCircle size={25} className="cursor-pointer" onClick={toggleMenuLogout} />
-        {isMenuLogOut ? (
+        {isMenuLogOut && (
           <ul className="bg-blue-100 animate-in rounded-box absolute shadow-2xl translate-y-14 cursor-pointer -translate-x-8 p-3">
             <li className="flex flex-row items-center space-x-2">
               <HiLogout color="black" size={25} />
               <p>Logout</p>
             </li>
           </ul>
-        ) : null}
+        ) }
       </div>
     </section>
   );
@@ -92,7 +93,7 @@ const SidebarContent = ({
         }
       >
         <MdDashboard size={28} />
-        {!sidebarClicked ? <p className="font-lg font-semibold">Dashboard</p> : null}
+        {!sidebarClicked && <p className="font-lg font-semibold">Dashboard</p> }
       </NavLink>
       {/* Receive */}
       <NavLink
@@ -104,7 +105,7 @@ const SidebarContent = ({
         }
       >
         <BiImport size={28} />
-        {!sidebarClicked ? <p className="font-lg font-semibold">Receive</p> : null}
+        {!sidebarClicked && <p className="font-lg font-semibold">Receive</p> }
       </NavLink>
       {/* Issuing */}
       <NavLink
@@ -116,7 +117,7 @@ const SidebarContent = ({
         }
       >
         <BiExport size={28} />
-        {!sidebarClicked ? <p className="font-lg font-semibold">Issuing</p> : null}
+        {!sidebarClicked && <p className="font-lg font-semibold">Issuing</p> }
       </NavLink>
 
       {/* Report */}
@@ -125,11 +126,11 @@ const SidebarContent = ({
         className="active:scale-105 items-center transition-all duration-200 p-2 bg-white border-none text-black hover:bg-blue-200 hover:text-blue-500  rounded-lg flex flex-row space-x-3 cursor-pointer"
       >
         <AiFillFolderOpen size={28} />
-        {!sidebarClicked ? <p className="font-lg font-semibold">Report</p> : null}
-        {!sidebarClicked ? <RiArrowDropDownLine size={28} /> : null}
+        {!sidebarClicked && <p className="font-lg font-semibold">Report</p> }
+        {!sidebarClicked && <RiArrowDropDownLine size={28} /> }
       </section>
 
-      {sidebarChildClicked ? (
+      {sidebarChildClicked && (
         <section className="space-y-2">
           {/* child 1  */}
           <NavLink
@@ -141,7 +142,7 @@ const SidebarContent = ({
             }
           >
             <RiFolderReceivedLine size={28} />
-            {!sidebarClicked ? <p className="font-lg font-semibold">Receive Report</p> : null}
+            {!sidebarClicked && <p className="font-lg font-semibold">Receive Report</p> }
           </NavLink>
           {/* child 2 */}
           <NavLink
@@ -153,10 +154,10 @@ const SidebarContent = ({
             }
           >
             <RiFolderSharedLine size={28} />
-            {!sidebarClicked ? <p className="font-lg font-semibold">Issuing Report</p> : null}
+            {!sidebarClicked && <p className="font-lg font-semibold">Issuing Report</p> }
           </NavLink>
         </section>
-      ) : null}
+      ) }
 
       {/* master */}
       <section
@@ -164,11 +165,11 @@ const SidebarContent = ({
         className="active:scale-105 items-center transition-all duration-200 p-2 bg-white border-none text-black hover:bg-blue-200 hover:text-blue-500  rounded-lg flex flex-row space-x-3 cursor-pointer"
       >
         <BsFillGearFill size={28} />
-        {!sidebarClicked ? <p className="font-lg font-semibold">Master</p> : null}
-        {!sidebarClicked ? <RiArrowDropDownLine size={28} /> : null}
+        {!sidebarClicked && <p className="font-lg font-semibold">Master</p> }
+        {!sidebarClicked && <RiArrowDropDownLine size={28} /> }
       </section>
 
-      {sidebarSecondChildClicked ? (
+      {sidebarSecondChildClicked && (
         <section className="space-y-2">
           {/* child 1  */}
           <NavLink
@@ -180,7 +181,7 @@ const SidebarContent = ({
             }
           >
             <BsBoxFill size={28} />
-            {!sidebarClicked ? <p className="font-lg font-semibold">Product</p> : null}
+            {!sidebarClicked && <p className="font-lg font-semibold">Product</p> }
           </NavLink>
           {/* child 2 */}
           <NavLink
@@ -192,7 +193,7 @@ const SidebarContent = ({
             }
           >
             <VscSymbolVariable size={28} />
-            {!sidebarClicked ? <p className="font-lg font-semibold">Unit</p> : null}
+            {!sidebarClicked && <p className="font-lg font-semibold">Unit</p> }
           </NavLink>
 
           {/* child 3 */}
@@ -205,7 +206,7 @@ const SidebarContent = ({
             }
           >
             <TbLockAccess size={28} />
-            {!sidebarClicked ? <p className="font-lg font-semibold">Access</p> : null}
+            {!sidebarClicked && <p className="font-lg font-semibold">Access</p> }
           </NavLink>
 
           {/* child 4 */}
@@ -218,10 +219,10 @@ const SidebarContent = ({
             }
           >
             <GiHandTruck size={28} />
-            {!sidebarClicked ? <p className="font-lg font-semibold">Suplier</p> : null}
+            {!sidebarClicked && <p className="font-lg font-semibold">Suplier</p> }
           </NavLink>
         </section>
-      ) : null}
+      ) }
 
       {/* end */}
     </ul>

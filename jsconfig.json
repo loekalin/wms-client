@@ -2,9 +2,6 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@pages/*": [
-        "src/pages/*"
-      ],
       "@/*": [
         "src/*"
       ],
@@ -13,9 +10,6 @@
       ],
       "@Pages/*": [
         "src/Pages/*"
-      ],
-      "@D/*": [
-        "src/Pages/Login/D/*"
       ],
       "@Dashboard/*": [
         "src/Pages/Dashboard/*"
@@ -28,6 +22,12 @@
       ],
       "@Test/*": [
         "src/Pages/Test/*"
+      ],
+      "@Receive/*": [
+        "src/Pages/Receive/*"
+      ],
+      "@Partials/*": [
+        "src/Components/Partials/*"
       ]
     }
   }

@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "@/Pages/Login/Login";
 import Dashboard from "@/Pages/Dashboard/Dashboard";
 import Navbar from "@/Components/Navbar";
-import test from "@/Pages/Test/test";
+import Receive from "@/Pages/Receive/Receive";
 const App = () => {
   return (
     <BrowserRouter>
@@ -17,10 +17,10 @@ const App = () => {
           }
         />
         <Route
-          path="/receivereport"
+          path="/receive"
           element={
             <Navbar>
-              <test />
+              <Receive />
             </Navbar>
           }
         />
