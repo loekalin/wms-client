@@ -27,6 +27,7 @@ File & Folder Directories:
 ├── postcss.config.js
 ├── public
 │   └── vite.svg
+├── readme.md
 ├── src
 │   ├── App.jsx
 │   ├── Components
@@ -37,11 +38,17 @@ File & Folder Directories:
 │   ├── main.jsx
 │   └── Pages
 │       ├── Dashboard
-│       │   └── Dashboard.jsx
+│       │   ├── Dashboard.jsx
+│       │   └── Partials
+│       │       └── Card.jsx
 │       ├── Login
 │       │   └── Login.jsx
-│       └── Test
-│           └── test.jsx
+│       └── Receive
+│           ├── Partials
+│           │   ├── Modal.jsx
+│           │   ├── SearchButton.jsx
+│           │   └── Table.jsx
+│           └── Receive.jsx
 ├── tailwind.config.js
 └── vite.config.js
 ```
