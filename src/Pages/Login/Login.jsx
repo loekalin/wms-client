@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 import { AiFillCheckCircle } from "react-icons/ai";
-
 import { Link } from "react-router-dom";
 import { GiHouse } from "react-icons/gi";
+import { authStore } from "@/Lib/authStore";
 const sideData = [
   {
     title: "Mudah Untuk Digunakan",
@@ -61,9 +61,35 @@ const LeftSide = () => {
 const RightSide = () => {
   const usernameRef = useRef("");
   const passwordRef = useRef("");
-
-  // const doLogin = (e) => {} <== todo: implement this function
-
+  const fakeData = {
+    users: [
+      {
+        id: 1,
+        firstName: "Terry",
+        lastName: "Medhurst",
+        maidenName: "Smitham",
+        age: 50,
+        gender: "male",
+        email: "atuny0@sohu.com",
+        phone: "+63 791 675 8914",
+        username: "atuny0",
+        password: "9uQFF1Lh",
+        birthDate: "2000-12-25",
+        image: "https://robohash.org/hicveldicta.png",
+        bloodGroup: "A−",
+        height: 189,
+        weight: 75.4,
+        eyeColor: "Green",
+      },
+    ],
+  };
+  const doLogin = authStore((state) => state.doLogin);
+  const users = authStore((state) => state.users);
+  const formSubmit = async (e) => {
+    e.preventDefault();
+    doLogin(fakeData);
+  };
+  console.log(users);
   return (
     <div className="card w-1/3 shadow-2xl py-8">
       <div className="card-body">
@@ -73,7 +99,7 @@ const RightSide = () => {
           <p className="font-semibold text-lg"> Small WMS</p>
         </section>
 
-        <form className="space-y-4 md:space-y-6">
+        <form onSubmit={formSubmit} className="space-y-4 md:space-y-6">
           <div>
             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
             <input
@@ -82,7 +108,7 @@ const RightSide = () => {
               type="text"
               className="bg-gray-50 border border-gray-300 focus text-gray-900 rounded-sm w-full p-3 "
               placeholder="Monyet"
-              required="true"
+              required={true}
             />
           </div>
           <div>
@@ -93,7 +119,7 @@ const RightSide = () => {
               type="password"
               placeholder="••••••••"
               className="bg-gray-50 border border-gray-300 focus text-gray-900 rounded-sm w-full p-3 "
-              required="true"
+              required={true}
             />
           </div>
           <div className="flex items-center justify-between">
@@ -104,7 +130,7 @@ const RightSide = () => {
                   aria-describedby="remember"
                   type="checkbox"
                   className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                  required=""
+                  required={true}
                 />
               </div>
               <div className="ml-3 text-sm">

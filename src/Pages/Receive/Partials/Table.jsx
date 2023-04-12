@@ -2,7 +2,7 @@ import React from "react";
 import { BiSearch } from "react-icons/bi";
 
 const Table = () => {
-  const data = ["No", "SUB - CATEGORY", "PRODUCT", " NUMBER CODE", "MANY", "UNIT", "DATE & TIME", "DETAIL"];
+  const data = ["No","PRODUCT", "SUB - CATEGORY", "MERK", " NUMBER CODE", "MANY", "UNIT", "DATE & TIME", "DETAIL"];
   return (
     <div className="overflow-x-auto">
       <table className="table table-compact w-full">
@@ -16,12 +16,26 @@ const Table = () => {
         <tbody>
           <tr>
             <th>1</th>
-            <td>Beras</td>
-            <td>Mintik Wangi</td>
-            <td></td>
-            <td>7</td>
+            <td>Kaos Oblong</td>
+            <td> Kaos</td>
+            <td>Erigo</td>
+            <td>14f1a649-3414-48cb-8dc6-301fe812a677</td>
             <td>By 5 Kg</td>
-            <td>Blue</td>
+            <td>40</td>
+            <td>01-01-2006</td>
+            <td>
+                <BiSearch size={20}/>
+            </td>
+          </tr>
+          <tr>
+            <th>2</th>
+            <td>Kaos Oblong</td>
+            <td> Kaos</td>
+            <td>Zydankaos</td>
+            <td>48cb-8dc614f1a649-3414-301fe812a677</td>
+            <td>By 2 Kg</td>
+            <td>10</td>
+            <td>21-12-2001</td>
             <td>
                 <BiSearch size={20}/>
             </td>

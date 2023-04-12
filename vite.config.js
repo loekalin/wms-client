@@ -6,4 +6,7 @@ export default defineConfig({
   plugins: [react(), ViteAliases({
     depth: 2,
   })],
+  server:{
+    host: true
+  }
 })

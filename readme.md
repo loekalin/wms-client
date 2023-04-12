@@ -50,7 +50,7 @@ File & Folder Directories:
 │           │   └── Table.jsx
 │           └── Receive.jsx
 ├── tailwind.config.js
-└── vite.config.js
+└── vite.config.js 
 ```
 ## Contributing
 
