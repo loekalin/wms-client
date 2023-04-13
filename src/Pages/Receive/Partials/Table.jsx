@@ -1,8 +1,13 @@
 import React from "react";
 import { BiSearch } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 
 const Table = () => {
-  const data = ["No","PRODUCT", "SUB - CATEGORY", "MERK", " NUMBER CODE", "MANY", "UNIT", "DATE & TIME", "DETAIL"];
+  const navigate = useNavigate();
+  const data = ["No", "PRODUCT", "SUB - CATEGORY", "MERK", " NUMBER CODE", "MANY", "UNIT", "DATE & TIME", "DETAIL"];
+  const doEdit = () => {
+    navigate("/receive/edit");
+  };
   return (
     <div className="overflow-x-auto">
       <table className="table table-compact w-full">
@@ -24,7 +29,7 @@ const Table = () => {
             <td>40</td>
             <td>01-01-2006</td>
             <td>
-                <BiSearch size={20}/>
+              <BiSearch onClick={doEdit} size={20} />
             </td>
           </tr>
           <tr>
@@ -37,7 +42,7 @@ const Table = () => {
             <td>10</td>
             <td>21-12-2001</td>
             <td>
-                <BiSearch size={20}/>
+              <BiSearch size={20} />
             </td>
           </tr>
         </tbody>

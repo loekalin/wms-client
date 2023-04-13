@@ -28,6 +28,9 @@
       ],
       "@Partials/*": [
         "src/Components/Partials/*"
+      ],
+      "@Edit/*": [
+        "src/Pages/Receive/Edit/*"
       ]
     }
   }

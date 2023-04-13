@@ -6,13 +6,11 @@ const SearchButton = () => {
   return (
     <div className="form-control cursor-pointer">
       <div className="input-group ">
-        <label htmlFor="modalSearch">
+        <label htmlFor="modalSearch" className="flex flex-row">
           <div className="cursor-pointer border p-[11px] rounded-tl-lg rounded-bl-lg flex items-center w-64">
             <BiSearch size={25} className="text-black opacity-40 mr-2" />
             <h1 className="text-black opacity-40">Search</h1>
           </div>
-        </label>
-        <label htmlFor="modalSearch">
           <p className="btn border-none rounded-bl-none rounded-tl-none hover:bg-[#0f3381] bg-[#1A56DB] text-white">Search</p>
         </label>
       </div>
