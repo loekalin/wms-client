@@ -9,6 +9,8 @@ export const authStore = create(
         isLoggedIn: false,
         doLogin: (user) => {
           set({ users: [user], isLoggedIn: true });
+          // set({ users: [user], isLoggedIn: true });
+          document.cookie = `token=${user.token}`;
         },
       }),
       {

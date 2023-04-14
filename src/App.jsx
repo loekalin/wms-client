@@ -5,7 +5,7 @@ import Navbar from "@/Components/Navbar";
 import Receive from "@/Pages/Receive/Receive";
 import ReceiveEdit from "@/Pages/Receive/Edit/ReceiveEdit";
 import ReceiveAdd from "@/Pages/Receive/Add/ReceiveAdd";
-// import AuthMiddleware from "@/Components/AuthMiddleware";
+  import AuthMiddleware from "@/Components/AuthMiddleware";
 
 const App = () => {
   return (
@@ -15,11 +15,11 @@ const App = () => {
         <Route
           path="/dashboard"
           element={
-            // <AuthMiddleware>
+            <AuthMiddleware>
             <Navbar>
               <Dashboard />
             </Navbar>
-            // </AuthMiddleware>
+             </AuthMiddleware>
           }
         />
         <Route

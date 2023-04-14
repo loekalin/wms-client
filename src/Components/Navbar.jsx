@@ -11,7 +11,7 @@ import { RiArrowDropDownLine, RiFolderSharedLine, RiFolderReceivedLine } from "r
 import { BsBoxFill, BsFillGearFill } from "react-icons/bs";
 import { VscSymbolVariable } from "react-icons/vsc";
 import { TbLockAccess } from "react-icons/tb";
-
+import { authStore } from "@/Lib/authStore";
 
 const Navbar = ({ children }) => {
   const sidebarSecondChildClicked = useStore((state) => state.sidebarSecondChildClicked);
@@ -54,15 +54,21 @@ const TopBar = ({ toggleSidebar }) => {
   const toggleMenuLogout = () => {
     setMenuLogOut((prev) => !prev);
   };
+  const logoutHandler = () => {
+    document.cookie = "token=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;";
+    authStore.setState({ isLoggedIn: false });
+  }
+  const username = authStore((state) => state.users);
+  
   return (
     <section className="border-b h-12 w-full flex bg-white flex-row justify-between items-center px-8">
       <AiOutlineMenu size={25} className="cursor-pointer" onClick={toggleSidebar} />
 
       <div className="flex flex-row items-center space-x-4">
-        <p>Budi</p>
+        <p>{username[0].data.username}</p>
         <FaUserCircle size={25} className="cursor-pointer" onClick={toggleMenuLogout} />
         {isMenuLogOut && (
-          <ul className="bg-blue-100 animate-in rounded-box absolute shadow-2xl translate-y-14 cursor-pointer -translate-x-8 p-3">
+          <ul onClick={logoutHandler} className="bg-blue-100 animate-in rounded-box absolute shadow-2xl translate-y-14 cursor-pointer -translate-x-8 p-3">
             <li className="flex flex-row items-center space-x-2">
               <HiLogout color="black" size={25} />
               <p>Logout</p>

@@ -1,8 +1,10 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { AiFillCheckCircle } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { GiHouse } from "react-icons/gi";
 import { authStore } from "@/Lib/authStore";
+import axios from "axios";
+
 const sideData = [
   {
     title: "Mudah Untuk Digunakan",
@@ -61,35 +63,32 @@ const LeftSide = () => {
 const RightSide = () => {
   const usernameRef = useRef("");
   const passwordRef = useRef("");
-  const fakeData = {
-    users: [
-      {
-        id: 1,
-        firstName: "Terry",
-        lastName: "Medhurst",
-        maidenName: "Smitham",
-        age: 50,
-        gender: "male",
-        email: "atuny0@sohu.com",
-        phone: "+63 791 675 8914",
-        username: "atuny0",
-        password: "9uQFF1Lh",
-        birthDate: "2000-12-25",
-        image: "https://robohash.org/hicveldicta.png",
-        bloodGroup: "A−",
-        height: 189,
-        weight: 75.4,
-        eyeColor: "Green",
-      },
-    ],
-  };
   const doLogin = authStore((state) => state.doLogin);
   const users = authStore((state) => state.users);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const navigate = useNavigate();
   const formSubmit = async (e) => {
     e.preventDefault();
-    doLogin(fakeData);
+    // doLogin();
+    try {
+      setIsLoading(true);
+      const password = parseInt(passwordRef.current);
+      const response = await axios.post(`${import.meta.env.VITE_API_APP_URL}/api/login`, {
+        username: usernameRef.current,
+        password: password,
+      });
+      doLogin(response.data);
+      console.log(response.data);
+      setIsLoading(false);
+      navigate("/dashboard");
+    } catch (error) {
+      setIsError(error.response.data.error);
+      authStore.setState({ isLoggedIn: false });
+      setIsLoading(false);
+    }
   };
-  console.log(users);
+
   return (
     <div className="card w-1/3 shadow-2xl py-8">
       <div className="card-body">
@@ -139,7 +138,8 @@ const RightSide = () => {
             </div>
           </div>
           {/* <Link> */}
-          <button type="submit" className="w-full text-white bg-blue-500 btn border-none hover:bg-blue-700">
+          {isError && <p className="text-red-500">{isError}</p>}
+          <button type="submit" disabled={isLoading} className="w-full text-white bg-blue-500 btn border-none hover:bg-blue-700">
             Login
           </button>
           {/* </Link> */}
