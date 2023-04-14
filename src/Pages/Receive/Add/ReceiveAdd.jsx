@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { addReceiveStore } from "@/Lib/addReceiveStore";
+import { useNavigate } from "react-router-dom";
 
 const ReceiveAdd = () => {
   return (
@@ -157,9 +158,14 @@ const RightSection = () => {
   const data = ["NO", "KATEGORI", "SUB - KATEGORI", "NAMA", "JUMLAH", "SATUAN", "TANGGAL & WAKTU", "SUPPLIER", "AKSI"];
   const receiveData = addReceiveStore((state) => state.data);
   const removeData = addReceiveStore((state) => state.removeData);
+  const navigate = useNavigate()
+
   const deleteData = (index) => {
     removeData(index);
   };
+  const cancelButton = () => {
+    navigate("/receive")
+  }
   return (
     <>
       <h1 className=" font-semibold text-xl">Detail Barang</h1>
@@ -198,7 +204,7 @@ const RightSection = () => {
             </tbody>
           </table>
           <section className="flex flex-row justify-end gap-x-4">
-            <button className="btn  w-52 mt-8 hover:bg-slate-200 hover:text-[#1d4291] hover:border-[#0f3381] border-[#1A56DB] bg-white text-[#1A56DB]">Cancel</button>
+            <button onClick={cancelButton} className="btn  w-52 mt-8 hover:bg-slate-200 hover:text-[#1d4291] hover:border-[#0f3381] border-[#1A56DB] bg-white text-[#1A56DB]">Cancel</button>
             <button className="btn w-52 mt-8 hover:bg-[#0f3381] bg-[#1A56DB] border-none">Simpan</button>
           </section>
         </div>

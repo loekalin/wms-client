@@ -5,12 +5,11 @@ export const addReceiveStore = create(
   devtools(
     persist(
       (set, get) => ({
-        data: null,
         addData: (newData) => {
-          set((state) => ({
-            data: [...state.data, newData],
-          }));
-        },
+            set((state) => ({
+              data: state.data ? [...state.data, newData] : [newData],
+            }));
+          },
         removeData: (index) => {
           set((state) => {
             const data = [...state.data];
