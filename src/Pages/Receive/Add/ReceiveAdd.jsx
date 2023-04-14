@@ -188,12 +188,19 @@ const RightSection = () => {
                       <td>{item.satuanBarang}</td>
                       <td>{item.tanggalBarang}</td>
                       <td>{":v"}</td>
-                      <td className="text-red-600 font-semibold cursor-pointer hover:underline" onClick={()=> deleteData(i)}> Remove</td>
+                      <td className="text-red-600 font-semibold cursor-pointer hover:underline" onClick={() => deleteData(i)}>
+                        {" "}
+                        Remove
+                      </td>
                     </tr>
                   );
                 })}
             </tbody>
           </table>
+          <section className="flex flex-row justify-end gap-x-4">
+            <button className="btn  w-52 mt-8 hover:bg-slate-200 hover:text-[#1d4291] hover:border-[#0f3381] border-[#1A56DB] bg-white text-[#1A56DB]">Cancel</button>
+            <button className="btn w-52 mt-8 hover:bg-[#0f3381] bg-[#1A56DB] border-none">Simpan</button>
+          </section>
         </div>
       </div>
     </>
