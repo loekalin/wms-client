@@ -31,6 +31,9 @@
       ],
       "@Edit/*": [
         "src/Pages/Receive/Edit/*"
+      ],
+      "@Add/*": [
+        "src/Pages/Receive/Add/*"
       ]
     }
   }

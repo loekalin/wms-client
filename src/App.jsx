@@ -4,6 +4,7 @@ import Dashboard from "@/Pages/Dashboard/Dashboard";
 import Navbar from "@/Components/Navbar";
 import Receive from "@/Pages/Receive/Receive";
 import ReceiveEdit from "@/Pages/Receive/Edit/ReceiveEdit";
+import ReceiveAdd from "@/Pages/Receive/Add/ReceiveAdd";
 // import AuthMiddleware from "@/Components/AuthMiddleware";
 
 const App = () => {
@@ -29,14 +30,22 @@ const App = () => {
             </Navbar>
           }
         />
-      <Route
-      path="/receive/edit"
-      element={
-        <Navbar>
-          <ReceiveEdit />
-        </Navbar>
-      }
-      />
+        <Route
+          path="/receive/edit"
+          element={
+            <Navbar>
+              <ReceiveEdit />
+            </Navbar>
+          }
+        />
+        <Route
+          path="/receive/add"
+          element={
+            <Navbar>
+              <ReceiveAdd />
+            </Navbar>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

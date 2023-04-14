@@ -1,7 +1,9 @@
 import React from "react";
 import SearchButton from "@/Pages/Receive/Partials/SearchButton";
 import Table from "@/Pages/Receive/Partials/Table";
+import { useNavigate } from "react-router-dom";
 const Receive = () => {
+  const navigate = useNavigate()
   return (
     <section>
       <h1 className="text-3xl font-semibold">Receive</h1>
@@ -9,7 +11,7 @@ const Receive = () => {
         <h1 className="p-4 font-semibold text-xl">All Receive</h1>
         <div className="flex flex-row justify-between mx-4">
           <SearchButton />
-          <button className="btn hover:bg-[#0f3381] bg-[#1A56DB] border-none">+ &nbsp; Add new Product</button>
+          <button onClick={()=> navigate("/receive/add/")} className="btn hover:bg-[#0f3381] bg-[#1A56DB] border-none">+ &nbsp; Add new Product</button>
         </div>
         <div className="divider mx-4"></div>
         {/* todo */}
