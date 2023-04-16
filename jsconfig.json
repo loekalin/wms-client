@@ -27,13 +27,16 @@
         "src/Pages/Receive/*"
       ],
       "@Partials/*": [
-        "src/Components/Partials/*"
+        "src/Pages/Issuing/Partials/*"
       ],
       "@Edit/*": [
-        "src/Pages/Receive/Edit/*"
+        "src/Pages/Issuing/Edit/*"
       ],
       "@Add/*": [
-        "src/Pages/Receive/Add/*"
+        "src/Pages/Issuing/Add/*"
+      ],
+      "@Issuing/*": [
+        "src/Pages/Issuing/*"
       ]
     }
   }
