@@ -73,10 +73,10 @@ const RightSide = () => {
     // doLogin();
     try {
       setIsLoading(true);
-      const password = parseInt(passwordRef.current);
+
       const response = await axios.post(`${import.meta.env.VITE_API_APP_URL}/api/login`, {
         username: usernameRef.current,
-        password: password,
+        password: passwordRef.current,
       });
       doLogin(response.data);
       console.log(response.data);
