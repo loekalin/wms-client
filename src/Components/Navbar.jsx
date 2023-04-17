@@ -56,7 +56,7 @@ const TopBar = ({ toggleSidebar }) => {
     authStore.setState({ isLoggedIn: false });
   };
   const username = authStore((state) => state.users);
-
+  console.log(username);
   return (
     <section className="border-b h-12 w-full flex bg-white flex-row justify-between items-center px-8">
       <AiOutlineMenu size={25} className="cursor-pointer" onClick={toggleSidebar} />
@@ -65,7 +65,7 @@ const TopBar = ({ toggleSidebar }) => {
         <Menu as={"div"}>
           <Menu.Button className="flex flex-row space-x-4">
             <p>{username && username[0].data.username}</p>
-            <FaUserCircle size={25} className="cursor-pointer" />
+            <FaUserCircle size={25} />
           </Menu.Button>
           <Transition
             enter="transition duration-100 ease-out"
@@ -75,7 +75,7 @@ const TopBar = ({ toggleSidebar }) => {
             leaveFrom="transform scale-100 opacity-100"
             leaveTo="transform scale-95 opacity-0"
           >
-            <Menu.Items className="absolute bg-blue-100 rounded-box shadow-2xl p-2 mt-2 ml-8 cursor-pointer">
+            <Menu.Items className="fixed bg-blue-100 rounded-box shadow-2xl p-2 -mx-4 my-5 cursor-pointer">
               {({ active }) => (
                 <li onClick={logoutHandler} className="flex flex-row items-center space-x-2">
                   <HiLogout color="black" size={25} />
@@ -195,68 +195,68 @@ const SidebarContent = ({
       </section>
 
       {/* master child */}
-        <Transition
-          show={sidebarSecondChildClicked}
-          enter="transition duration-200 ease-in"
-          enterFrom="transform scale-95 opacity-0"
-          enterTo="transform scale-100 opacity-100"
-          leave="transition duration-200 ease-out"
-          leaveFrom="transform scale-100 opacity-100"
-          leaveTo="transform scale-95 opacity-0"
-        >
-          <section className="space-y-2">
-            {/* child 1  */}
-            <NavLink
-              to={"/product"}
-              className={({ isActive }) =>
-                isActive
-                  ? "active:scale-105 items-center transition-all duration-200 p-2 bg-blue-200 text-blue-600 border-none hover:bg-blue-400 hover:text-blue-800 rounded-lg flex flex-row justify-start space-x-3 cursor-pointer"
-                  : "active:scale-105 items-center transition-all duration-200 p-2 bg-white border-none text-black hover:bg-blue-200 hover:text-blue-500  rounded-lg flex flex-row justify-start space-x-3 cursor-pointer"
-              }
-            >
-              <BsBoxFill size={28} />
-              {!sidebarClicked && <p className="font-lg font-semibold">Product</p>}
-            </NavLink>
-            {/* child 2 */}
-            <NavLink
-              to={"/unit"}
-              className={({ isActive }) =>
-                isActive
-                  ? "active:scale-105 items-center transition-all duration-200 p-2 bg-blue-200 text-blue-600 border-none hover:bg-blue-400 hover:text-blue-800 rounded-lg flex flex-row justify-start space-x-3 cursor-pointer"
-                  : "active:scale-105 items-center transition-all duration-200 p-2 bg-white border-none text-black hover:bg-blue-200 hover:text-blue-500  rounded-lg flex flex-row justify-start space-x-3 cursor-pointer"
-              }
-            >
-              <VscSymbolVariable size={28} />
-              {!sidebarClicked && <p className="font-lg font-semibold">Unit</p>}
-            </NavLink>
+      <Transition
+        show={sidebarSecondChildClicked}
+        enter="transition duration-200 ease-in"
+        enterFrom="transform scale-95 opacity-0"
+        enterTo="transform scale-100 opacity-100"
+        leave="transition duration-200 ease-out"
+        leaveFrom="transform scale-100 opacity-100"
+        leaveTo="transform scale-95 opacity-0"
+      >
+        <section className="space-y-2">
+          {/* child 1  */}
+          <NavLink
+            to={"/product"}
+            className={({ isActive }) =>
+              isActive
+                ? "active:scale-105 items-center transition-all duration-200 p-2 bg-blue-200 text-blue-600 border-none hover:bg-blue-400 hover:text-blue-800 rounded-lg flex flex-row justify-start space-x-3 cursor-pointer"
+                : "active:scale-105 items-center transition-all duration-200 p-2 bg-white border-none text-black hover:bg-blue-200 hover:text-blue-500  rounded-lg flex flex-row justify-start space-x-3 cursor-pointer"
+            }
+          >
+            <BsBoxFill size={28} />
+            {!sidebarClicked && <p className="font-lg font-semibold">Product</p>}
+          </NavLink>
+          {/* child 2 */}
+          <NavLink
+            to={"/unit"}
+            className={({ isActive }) =>
+              isActive
+                ? "active:scale-105 items-center transition-all duration-200 p-2 bg-blue-200 text-blue-600 border-none hover:bg-blue-400 hover:text-blue-800 rounded-lg flex flex-row justify-start space-x-3 cursor-pointer"
+                : "active:scale-105 items-center transition-all duration-200 p-2 bg-white border-none text-black hover:bg-blue-200 hover:text-blue-500  rounded-lg flex flex-row justify-start space-x-3 cursor-pointer"
+            }
+          >
+            <VscSymbolVariable size={28} />
+            {!sidebarClicked && <p className="font-lg font-semibold">Unit</p>}
+          </NavLink>
 
-            {/* child 3 */}
-            <NavLink
-              to={"/access"}
-              className={({ isActive }) =>
-                isActive
-                  ? "active:scale-105 items-center transition-all duration-200 p-2 bg-blue-200 text-blue-600 border-none hover:bg-blue-400 hover:text-blue-800 rounded-lg flex flex-row justify-start space-x-3 cursor-pointer"
-                  : "active:scale-105 items-center transition-all duration-200 p-2 bg-white border-none text-black hover:bg-blue-200 hover:text-blue-500  rounded-lg flex flex-row justify-start space-x-3 cursor-pointer"
-              }
-            >
-              <TbLockAccess size={28} />
-              {!sidebarClicked && <p className="font-lg font-semibold">Access</p>}
-            </NavLink>
+          {/* child 3 */}
+          <NavLink
+            to={"/access"}
+            className={({ isActive }) =>
+              isActive
+                ? "active:scale-105 items-center transition-all duration-200 p-2 bg-blue-200 text-blue-600 border-none hover:bg-blue-400 hover:text-blue-800 rounded-lg flex flex-row justify-start space-x-3 cursor-pointer"
+                : "active:scale-105 items-center transition-all duration-200 p-2 bg-white border-none text-black hover:bg-blue-200 hover:text-blue-500  rounded-lg flex flex-row justify-start space-x-3 cursor-pointer"
+            }
+          >
+            <TbLockAccess size={28} />
+            {!sidebarClicked && <p className="font-lg font-semibold">Access</p>}
+          </NavLink>
 
-            {/* child 4 */}
-            <NavLink
-              to={"/Suplier"}
-              className={({ isActive }) =>
-                isActive
-                  ? "active:scale-105 items-center transition-all duration-200 p-2 bg-blue-200 text-blue-600 border-none hover:bg-blue-400 hover:text-blue-800 rounded-lg flex flex-row justify-start space-x-3 cursor-pointer"
-                  : "active:scale-105 items-center transition-all duration-200 p-2 bg-white border-none text-black hover:bg-blue-200 hover:text-blue-500  rounded-lg flex flex-row justify-start space-x-3 cursor-pointer"
-              }
-            >
-              <GiHandTruck size={28} />
-              {!sidebarClicked && <p className="font-lg font-semibold">Suplier</p>}
-            </NavLink>
-          </section>
-        </Transition>
+          {/* child 4 */}
+          <NavLink
+            to={"/Suplier"}
+            className={({ isActive }) =>
+              isActive
+                ? "active:scale-105 items-center transition-all duration-200 p-2 bg-blue-200 text-blue-600 border-none hover:bg-blue-400 hover:text-blue-800 rounded-lg flex flex-row justify-start space-x-3 cursor-pointer"
+                : "active:scale-105 items-center transition-all duration-200 p-2 bg-white border-none text-black hover:bg-blue-200 hover:text-blue-500  rounded-lg flex flex-row justify-start space-x-3 cursor-pointer"
+            }
+          >
+            <GiHandTruck size={28} />
+            {!sidebarClicked && <p className="font-lg font-semibold">Suplier</p>}
+          </NavLink>
+        </section>
+      </Transition>
 
       {/* end */}
     </ul>
