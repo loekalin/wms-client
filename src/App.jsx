@@ -7,8 +7,8 @@ import ReceiveEdit from "@/Pages/Receive/Edit/ReceiveEdit";
 import ReceiveAdd from "@/Pages/Receive/Add/ReceiveAdd";
 import Issuing from "@/Pages/Issuing/Issuing";
 import IssuingAdd from "@/Pages/Issuing/Add/IssuingAdd";
+import MasterProduct from "@/Pages/Master/Product/MasterProduct";
 import AuthMiddleware from "@/Components/AuthMiddleware";
-
 
 const App = () => {
   return (
@@ -71,6 +71,16 @@ const App = () => {
             <AuthMiddleware>
               <Navbar>
                 <IssuingAdd />
+              </Navbar>
+            </AuthMiddleware>
+          }
+        />
+        <Route
+          path="/master/product"
+          element={
+            <AuthMiddleware>
+              <Navbar>
+                <MasterProduct />
               </Navbar>
             </AuthMiddleware>
           }

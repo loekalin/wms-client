@@ -37,6 +37,12 @@
       ],
       "@Issuing/*": [
         "src/Pages/Issuing/*"
+      ],
+      "@Master/*": [
+        "src/Pages/Master/*"
+      ],
+      "@Product/*": [
+        "src/Pages/Master/Product/*"
       ]
     }
   }

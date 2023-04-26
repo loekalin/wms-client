@@ -207,7 +207,7 @@ const SidebarContent = ({
         <section className="space-y-2">
           {/* child 1  */}
           <NavLink
-            to={"/product"}
+            to={"/master/product"}
             className={({ isActive }) =>
               isActive
                 ? "active:scale-105 items-center transition-all duration-200 p-2 bg-blue-200 text-blue-600 border-none hover:bg-blue-400 hover:text-blue-800 rounded-lg flex flex-row justify-start space-x-3 cursor-pointer"

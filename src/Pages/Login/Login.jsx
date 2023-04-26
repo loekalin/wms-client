@@ -73,7 +73,6 @@ const RightSide = () => {
     // doLogin();
     try {
       setIsLoading(true);
-
       const response = await axios.post(`${import.meta.env.VITE_API_APP_URL}/api/login`, {
         username: usernameRef.current,
         password: passwordRef.current,
