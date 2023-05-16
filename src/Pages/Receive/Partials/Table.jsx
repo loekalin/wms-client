@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import useSWR from "swr";
@@ -9,11 +9,17 @@ const Table = () => {
   const navigate = useNavigate();
   const fetcher = (url) => axios.get(url).then((res) => res.data);
   const [paginate, setPaginate] = useState(1);
-  const { data, error, isLoading } = useSWR(import.meta.env.VITE_API_APP_URL + "/api/receivings", fetcher);
+  const { data, error, isLoading } = useSWR(
+    `${import.meta.env.VITE_API_APP_URL}/api/receivings?page=${paginate}`,
+    fetcher
+  );
   const tableRow = ["No", "PRODUCT", "SUB - CATEGORY", " NUMBER CODE", "UNIT", "DATE & TIME", "DETAIL"];
   const doEdit = (uuid) => {
     navigate(`/receive/edit/${uuid}`);
   };
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
   // console.log(data);
   return (
     <div className="overflow-x-auto">
@@ -64,14 +70,12 @@ const Table = () => {
              get the last element in the `data.links` array, accessing its `url` property, and then
              extracting the last character of that string (which should be the page number). This is
              used for pagination, allowing the user to navigate to the last page of data. */
-              onClick={
-                () =>
-                  setPaginate(
-                    data.links
-                      .slice(-1)[0]
-                      .url.substring(data.links.slice(-1)[0].url.length - 1, data.links.slice(-1)[0].url.length)
-                  )
-                // data.links[2].url.substring(data.links[2].url.length - 1, data.links[2].url.length)
+              onClick={() =>
+                setPaginate(
+                  data.links
+                    .slice(-1)[0]
+                    .url.substring(data.links.slice(-1)[0].url.length - 1, data.links.slice(-1)[0].url.length)
+                )
               }
               disabled={!data.links.slice(-1)[0].url}
               className="btn"
