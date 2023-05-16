@@ -55,29 +55,43 @@ const Table = () => {
           <div className="btn-group w-full flex justify-end my-5 pr-16">
             <button
               onClick={() =>
-                setPaginate(data.links[0].url.substring(data.links[0].url.length - 1, data.links[0].url.length))
+                setPaginate(
+                  data.links[0].url.replace(
+                    /[A-Za-z]+:\/\/\b(?:(?:2(?:[0-4][0-9]|5[0-5])|[0-1]?[0-9]?[0-9])\.){3}(?:(?:2([0-4][0-9]|5[0-5])|[0-1]?[0-9]?[0-9]))\b:([A-Za-z0-9]+(\/[A-Za-z0-9]+)+)\?[A-Za-z]+=/i,
+                    ""
+                  )
+                )
               }
               disabled={!data.links[0].url}
-              className="btn"
+              className="btn bg-[#1a56db] border-none hover:bg-[#123e9d]"
             >
               «
             </button>
-            <button className="btn">{data.current_page}</button>
+            {data.links.slice(1, data.links.length - 1).map((data, i) => {
+              return (
+                <button
+                  key={i}
+                  onClick={() => setPaginate(data.label)}
+                  disabled={data.active}
+                  className="btn bg-[#1a56db] border-none hover:bg-[#123e9d]"
+                >
+                  {data.label}
+                </button>
+              );
+            })}
             <button
-             /* This is an onClick event handler that sets the value of the `paginate` state to the
-             last page number in the `data.links` array. It does this by using the `slice` method to
-             get the last element in the `data.links` array, accessing its `url` property, and then
-             extracting the last character of that string (which should be the page number). This is
-             used for pagination, allowing the user to navigate to the last page of data. */
               onClick={() =>
                 setPaginate(
                   data.links
                     .slice(-1)[0]
-                    .url.substring(data.links.slice(-1)[0].url.length - 1, data.links.slice(-1)[0].url.length)
+                    .url.replace(
+                      /[A-Za-z]+:\/\/\b(?:(?:2(?:[0-4][0-9]|5[0-5])|[0-1]?[0-9]?[0-9])\.){3}(?:(?:2([0-4][0-9]|5[0-5])|[0-1]?[0-9]?[0-9]))\b:([A-Za-z0-9]+(\/[A-Za-z0-9]+)+)\?[A-Za-z]+=/i,
+                      ""
+                    )
                 )
               }
               disabled={!data.links.slice(-1)[0].url}
-              className="btn"
+              className="btn bg-[#1a56db] border-none hover:bg-[#123e9d]"
             >
               »
             </button>
