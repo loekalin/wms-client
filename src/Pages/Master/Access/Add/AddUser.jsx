@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
-const MasterProduct = () => {
+const AddUser = () => {
   const [isEdit, setIsEdit] = useState(false);
 
   return (
     <section>
-      <h1 className="text-3xl font-semibold">Master Product</h1>
-      <h1 className="my-8 font-semibold text-2xl">Tambahkan Barang Baru</h1>{" "}
+      <h1 className="text-3xl font-semibold">Master User</h1>
+      <h1 className="my-8 font-semibold text-2xl">Tambahkan User Baru</h1>{" "}
       <section className="mt-4 bg-white shadow-[1px_3px_12px_rgba(0,0,0,0.25)] rounded-lg">
         {/* todo */}
         <form className="flex flex-wrap flex-row  gap-x-6 py-6 gap-y-4 px-4">
@@ -28,34 +28,31 @@ const MasterProduct = () => {
   );
 };
 
-export default MasterProduct;
+export default AddUser;
 
 const InputEdit = () => {
-  return (  
+  return (
     <>
       <section>
-        <h1 className="text-xl font-semibold">Kategori</h1>
+        <h1 className="text-xl font-semibold">Username</h1>
         <input type="text" className="border p-1 rounded-sm mt-2" placeholder="" />
       </section>
       <section>
-        <h1 className="text-xl font-semibold">Sub - Kategori</h1>
+        <h1 className="text-xl font-semibold">Password</h1>
         <input type="text" className="border p-1 rounded-sm mt-2" placeholder="" />
       </section>
-      <section>
-        <h1 className="text-xl font-semibold">Nama Barang</h1>
-        <input type="text" className="border p-1 rounded-sm mt-2" placeholder="" />
-      </section>
-      <section>
-        <h1 className="text-xl font-semibold">Jumlah Barang</h1>
-        <input type="text" className="border p-1 rounded-sm mt-2" placeholder="" />
-      </section>
-      <section>
-        <h1 className="text-xl font-semibold">Satuan Barang</h1>
-        <input type="text" className="border p-1 rounded-sm mt-2" placeholder="" />
-      </section>
-      <section>
-        <h1 className="text-xl font-semibold">Supplier</h1>
-        <input type="text" className="border p-1 rounded-sm mt-2" placeholder="" />
+      <section className=" w-60 ">
+        <h1 className="text-xl font-semibold">Access</h1>
+        <select className="select select-bordered w-full">
+          <option disabled selected>
+            User
+          </option>
+          <option>Homer</option>
+          <option>Marge</option>
+          <option>Bart</option>
+          <option>Lisa</option>
+          <option>Maggie</option>
+        </select>
       </section>
     </>
   );

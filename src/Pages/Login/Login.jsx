@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { AiFillCheckCircle } from "react-icons/ai";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { GiHouse } from "react-icons/gi";
 import { authStore } from "@/Lib/authStore";
 import axios from "axios";
@@ -64,7 +64,6 @@ const RightSide = () => {
   const usernameRef = useRef("");
   const passwordRef = useRef("");
   const doLogin = authStore((state) => state.doLogin);
-  const users = authStore((state) => state.users);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const navigate = useNavigate();
@@ -105,7 +104,7 @@ const RightSide = () => {
               onChange={(e) => (usernameRef.current = e.target.value)}
               type="text"
               className="bg-gray-50 border border-gray-300 focus text-gray-900 rounded-sm w-full p-3 "
-              placeholder="Monyet"
+              placeholder="Budi"
               required={true}
             />
           </div>

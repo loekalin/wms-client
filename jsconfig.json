@@ -43,6 +43,9 @@
       ],
       "@Product/*": [
         "src/Pages/Master/Product/*"
+      ],
+      "@Access/*": [
+        "src/Pages/Master/Access/*"
       ]
     }
   }

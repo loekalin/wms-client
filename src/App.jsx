@@ -8,6 +8,8 @@ import ReceiveAdd from "@/Pages/Receive/Add/ReceiveAdd";
 import Issuing from "@/Pages/Issuing/Issuing";
 import IssuingAdd from "@/Pages/Issuing/Add/IssuingAdd";
 import MasterProduct from "@/Pages/Master/Product/MasterProduct";
+import MasterAccess from "@/Pages/Master/Access/MasterAccess";
+import AddUser from "@/Pages/Master/Access/Add/AddUser";
 import AuthMiddleware from "@/Components/AuthMiddleware";
 
 const App = () => {
@@ -36,7 +38,7 @@ const App = () => {
           }
         />
         <Route
-          path="/receive/edit"
+          path="/receive/edit/:id"
           element={
             <AuthMiddleware>
               <Navbar>
@@ -65,8 +67,18 @@ const App = () => {
             </AuthMiddleware>
           }
         />
+        {/* <Route
+          path="/issuing/edit/:id"
+          element={
+            <AuthMiddleware>
+              <Navbar>
+                <IssuingAdd />
+              </Navbar>
+            </AuthMiddleware>
+          }
+        /> */}
         <Route
-          path="/issuing/add"
+          path="/issuing/add/"
           element={
             <AuthMiddleware>
               <Navbar>
@@ -81,6 +93,26 @@ const App = () => {
             <AuthMiddleware>
               <Navbar>
                 <MasterProduct />
+              </Navbar>
+            </AuthMiddleware>
+          }
+        />
+        <Route
+          path="/master/access"
+          element={
+            <AuthMiddleware>
+              <Navbar>
+                <MasterAccess />
+              </Navbar>
+            </AuthMiddleware>
+          }
+        />
+        <Route
+          path="/master/access/add"
+          element={
+            <AuthMiddleware>
+              <Navbar>
+                <AddUser />
               </Navbar>
             </AuthMiddleware>
           }

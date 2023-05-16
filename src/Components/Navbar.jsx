@@ -219,7 +219,7 @@ const SidebarContent = ({
           </NavLink>
           {/* child 2 */}
           <NavLink
-            to={"/unit"}
+            to={"/master/unit"}
             className={({ isActive }) =>
               isActive
                 ? "active:scale-105 items-center transition-all duration-200 p-2 bg-blue-200 text-blue-600 border-none hover:bg-blue-400 hover:text-blue-800 rounded-lg flex flex-row justify-start space-x-3 cursor-pointer"
@@ -232,7 +232,7 @@ const SidebarContent = ({
 
           {/* child 3 */}
           <NavLink
-            to={"/access"}
+            to={"/master/access"}
             className={({ isActive }) =>
               isActive
                 ? "active:scale-105 items-center transition-all duration-200 p-2 bg-blue-200 text-blue-600 border-none hover:bg-blue-400 hover:text-blue-800 rounded-lg flex flex-row justify-start space-x-3 cursor-pointer"
