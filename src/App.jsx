@@ -24,7 +24,7 @@ const App = () => {
               <Navbar>
                 <Dashboard />
               </Navbar>
-            </AuthMiddleware>
+            </AuthMiddleware>         
           }
         />
         <Route

@@ -2,10 +2,12 @@ import React, { useRef, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import { useNavigate } from "react-router-dom";
 
 const MySwal = withReactContent(Swal);
 
 const AddUser = () => {
+  const navigate = useNavigate();
   const formRef = useRef();
   const usernameRef = useRef();
   const passwordRef = useRef();
@@ -33,6 +35,7 @@ const AddUser = () => {
       }).then((result) => {
         if (result.isConfirmed) {
           formRef.current.reset();
+          navigate("/master/access")
         }
       });
     } catch (error) {

@@ -19,6 +19,7 @@
     "react-icons": "^4.8.0",
     "react-loader-spinner": "^5.3.4",
     "react-router-dom": "^6.10.0",
+    "recharts": "^2.6.2",
     "sweetalert2": "^11.7.5",
     "sweetalert2-react-content": "^5.0.7",
     "swr": "^2.1.2",

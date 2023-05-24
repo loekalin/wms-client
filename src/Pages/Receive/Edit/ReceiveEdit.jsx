@@ -3,11 +3,13 @@ import axios from "axios";
 import useSWR from "swr";
 import { useParams } from "react-router-dom";
 import { TailSpin } from "react-loader-spinner";
+
 const ReceiveEdit = () => {
   const { id } = useParams();
   const [isEdit, setIsEdit] = useState(false);
   const fetcher = (url) => axios.get(url).then((res) => res.data);
   const { data, error, isLoading } = useSWR(`${import.meta.env.VITE_API_APP_URL}/api/receivings/${id}`, fetcher);
+  console.log(data);
   return (
     <section>
       <h1 className="text-3xl font-semibold">Receive Detail</h1>
@@ -24,6 +26,7 @@ const ReceiveEdit = () => {
             sub_category={data?.[0].sub_category}
             supplier={data?.[0].supplier}
             value={data?.[0].value}
+            uuid={data?.[0].uuid}
             isEdit={isEdit}
           />
         </section>
@@ -55,7 +58,7 @@ const ReceiveEdit = () => {
 
 export default ReceiveEdit;
 
-const InputEdit = ({ isLoading, isEdit, product_name, value, satuan, supplier, sub_category, category }) => {
+const InputEdit = ({ isLoading, isEdit, product_name, value, satuan, supplier, sub_category, category, uuid }) => {
   return (
     <>
       {isLoading ? (
@@ -85,7 +88,7 @@ const InputEdit = ({ isLoading, isEdit, product_name, value, satuan, supplier, s
           <section>
             <h1 className="text-xl font-semibold">Unit</h1>
             <input
-              disabled={!isEdit}
+              disabled={true}
               type="text"
               className="border p-1 rounded-sm mt-2"
               value={satuan}
@@ -95,7 +98,7 @@ const InputEdit = ({ isLoading, isEdit, product_name, value, satuan, supplier, s
           <section>
             <h1 className="text-xl font-semibold">Supplier Name</h1>
             <input
-              disabled={!isEdit}
+              disabled={true}
               type="text"
               className="border p-1 rounded-sm mt-2"
               value={supplier}
@@ -105,7 +108,7 @@ const InputEdit = ({ isLoading, isEdit, product_name, value, satuan, supplier, s
           <section>
             <h1 className="text-xl font-semibold">Categories</h1>
             <input
-              disabled={!isEdit}
+              disabled={true}
               type="text"
               className="border p-1 rounded-sm mt-2"
               value={category}
@@ -115,7 +118,7 @@ const InputEdit = ({ isLoading, isEdit, product_name, value, satuan, supplier, s
           <section>
             <h1 className="text-xl font-semibold">Sub Categories</h1>
             <input
-              disabled={!isEdit}
+              disabled={true}
               type="text"
               className="border p-1 rounded-sm mt-2"
               value={sub_category}
@@ -124,7 +127,7 @@ const InputEdit = ({ isLoading, isEdit, product_name, value, satuan, supplier, s
           </section>
           <section>
             <h1 className="text-xl font-semibold">Number Code</h1>
-            <input disabled={!isEdit} type="text" className="border p-1 rounded-sm mt-2" placeholder="XX/XXXX/XXXX" />
+            <input disabled={true} type="text" className="border p-1 rounded-sm mt-2" value={uuid} placeholder={uuid} />
           </section>
         </>
       )}

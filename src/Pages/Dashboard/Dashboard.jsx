@@ -1,5 +1,5 @@
 import React from "react";
-
+import ChartComponent from "@/Pages/Dashboard/Partials/Chart";
 import Card from "@/Pages/Dashboard/Partials/Card";
 import { SiHackthebox } from "react-icons/si";
 import { MdOutlineMoveToInbox } from "react-icons/md";
@@ -44,6 +44,7 @@ const Dashboard = () => {
           return <Card key={index} icon={data.icon} nomor={data.nomor} keterangan={data.keterangan} />;
         })}
       </div>
+      <ChartComponent />
     </section>
   );
 };
