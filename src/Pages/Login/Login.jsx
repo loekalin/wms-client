@@ -1,8 +1,10 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { AiFillCheckCircle } from "react-icons/ai";
-
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { GiHouse } from "react-icons/gi";
+import { authStore } from "@/Lib/authStore";
+import axios from "axios";
+
 const sideData = [
   {
     title: "Mudah Untuk Digunakan",
@@ -61,8 +63,29 @@ const LeftSide = () => {
 const RightSide = () => {
   const usernameRef = useRef("");
   const passwordRef = useRef("");
-
-  // const doLogin = (e) => {} <== todo: implement this function
+  const doLogin = authStore((state) => state.doLogin);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const navigate = useNavigate();
+  const formSubmit = async (e) => {
+    e.preventDefault();
+    // doLogin();
+    try {
+      setIsLoading(true);
+      const response = await axios.post(`${import.meta.env.VITE_API_APP_URL}/api/login`, {
+        username: usernameRef.current,
+        password: passwordRef.current,
+      });
+      doLogin(response.data);
+      console.log(response.data);
+      setIsLoading(false);
+      navigate("/dashboard");
+    } catch (error) {
+      setIsError(error.response.data.error);
+      authStore.setState({ isLoggedIn: false });
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="card w-1/3 shadow-2xl py-8">
@@ -73,7 +96,7 @@ const RightSide = () => {
           <p className="font-semibold text-lg"> Small WMS</p>
         </section>
 
-        <form className="space-y-4 md:space-y-6">
+        <form onSubmit={formSubmit} className="space-y-4 md:space-y-6">
           <div>
             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
             <input
@@ -81,8 +104,8 @@ const RightSide = () => {
               onChange={(e) => (usernameRef.current = e.target.value)}
               type="text"
               className="bg-gray-50 border border-gray-300 focus text-gray-900 rounded-sm w-full p-3 "
-              placeholder="Monyet"
-              required="true"
+              placeholder="Budi"
+              required={true}
             />
           </div>
           <div>
@@ -93,7 +116,7 @@ const RightSide = () => {
               type="password"
               placeholder="••••••••"
               className="bg-gray-50 border border-gray-300 focus text-gray-900 rounded-sm w-full p-3 "
-              required="true"
+              required={true}
             />
           </div>
           <div className="flex items-center justify-between">
@@ -104,7 +127,7 @@ const RightSide = () => {
                   aria-describedby="remember"
                   type="checkbox"
                   className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                  required=""
+                  required={true}
                 />
               </div>
               <div className="ml-3 text-sm">
@@ -113,7 +136,8 @@ const RightSide = () => {
             </div>
           </div>
           {/* <Link> */}
-          <button type="submit" className="w-full text-white bg-blue-500 btn border-none hover:bg-blue-700">
+          {isError && <p className="text-red-500">{isError}</p>}
+          <button type="submit" disabled={isLoading} className="w-full text-white bg-blue-500 btn border-none hover:bg-blue-700">
             Login
           </button>
           {/* </Link> */}
