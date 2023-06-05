@@ -14,8 +14,9 @@ const ChartComponent = () => {
   console.log(dataMapped);
   const dataChart = dataMapped?.name?.map((data, index) => ({
     name: data,
-    value: dataMapped.uv[index],
+    value: parseInt(dataMapped.uv[index]),
   }));
+  console.log(dataChart);
 
   return isLoading ? (
     <CirclesWithBar color="#5c9ee4" wrapperClass="flex w-full translate-y-52 p-5 items-center justify-center" />
